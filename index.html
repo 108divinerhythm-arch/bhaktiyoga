@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhakti Yoga Foundation — Simple Living · High Thinking</title>
+<meta name="description" content="Bhakti Yoga Foundation — A Queensland community nurturing families through spiritual education, Vedic wisdom, and wholesome nourishment. Free weekly programs in Brisbane.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C49A3C;
+    --gold-light: #E8C97A;
+    --teal: #2A6B7C;
+    --teal-dark: #1A4A57;
+    --cream: #FAF6EE;
+    --warm-white: #FFFDF7;
+    --text-dark: #1C1C1C;
+    --text-mid: #4A4A4A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(255,253,247,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(196,154,60,0.2);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo img { height: 48px; }
+  .nav-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--teal-dark); line-height: 1.2; }
+  .nav-name span { display: block; font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gold); font-family: 'Jost', sans-serif; font-weight: 500; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--teal); color: white; padding: 10px 22px; border-radius: 2px; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--teal-dark); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--teal-dark); transition: all 0.3s; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--teal-dark) 0%, var(--teal) 45%, #3A7A6A 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding-top: 72px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-inner { text-align: center; color: white; padding: 2rem; max-width: 860px; position: relative; z-index: 1; }
+  .hero-logo { width: 160px; margin-bottom: 2.5rem; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3)); animation: fadeDown 1s ease both; }
+  .hero-tagline { font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.2rem; animation: fadeDown 1s ease 0.2s both; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 300; line-height: 1.15; margin-bottom: 1.5rem; animation: fadeDown 1s ease 0.35s both; }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero-sub { font-size: 1.05rem; font-weight: 300; line-height: 1.8; max-width: 580px; margin: 0 auto 2.5rem; opacity: 0.88; animation: fadeDown 1s ease 0.5s both; }
+  .hero-badges { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; animation: fadeDown 1s ease 0.65s both; }
+  .badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); padding: 6px 16px; border-radius: 2px; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeDown 1s ease 0.8s both; }
+  .btn-primary { background: var(--gold); color: var(--text-dark); padding: 15px 36px; text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.5); color: white; padding: 15px 36px; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; transition: all 0.2s; }
+  .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
+  .scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; }
+  .scroll-indicator svg { color: rgba(255,255,255,0.5); }
+
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+  /* SECTIONS */
+  section { padding: 5rem 1.5rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.2; color: var(--teal-dark); margin-bottom: 1.5rem; }
+  .section-title em { font-style: italic; }
+  .divider { width: 60px; height: 2px; background: var(--gold); margin-bottom: 2rem; }
+
+  /* ABOUT */
+  .about-bg { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .about-text p { font-size: 1rem; line-height: 1.9; color: var(--text-mid); margin-bottom: 1.2rem; font-weight: 300; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .stat-card { background: white; border: 1px solid rgba(196,154,60,0.2); padding: 1.8rem; border-radius: 4px; text-align: center; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: var(--teal); font-weight: 300; line-height: 1; }
+  .stat-label { font-size: 0.78rem; color: var(--text-mid); letter-spacing: 0.08em; margin-top: 0.5rem; }
+
+  /* VISION */
+  .vision-box { background: var(--teal-dark); color: white; padding: 4rem; border-radius: 4px; text-align: center; }
+  .vision-box .section-title { color: white; }
+  .vision-box p { font-size: 1.15rem; font-weight: 300; line-height: 1.9; opacity: 0.88; max-width: 700px; margin: 0 auto; }
+  .vision-box .divider { margin: 0 auto 2rem; }
+
+  /* PROGRAMS */
+  .programs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  .program-card { border: 1px solid rgba(196,154,60,0.25); border-radius: 4px; overflow: hidden; }
+  .program-header { background: var(--teal); color: white; padding: 1.5rem 2rem; }
+  .program-time { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.5rem; }
+  .program-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; }
+  .program-body { padding: 2rem; background: white; }
+  .program-body ul { list-style: none; }
+  .program-body li { padding: 0.6rem 0; border-bottom: 1px solid var(--cream); font-size: 0.9rem; color: var(--text-mid); font-weight: 300; display: flex; gap: 0.8rem; align-items: flex-start; }
+  .program-body li:last-child { border-bottom: none; }
+  .program-body li::before { content: '✦'; color: var(--gold); font-size: 0.6rem; margin-top: 4px; flex-shrink: 0; }
+  .venue-tag { background: var(--cream); padding: 0.8rem 1.2rem; margin-top: 1.2rem; border-radius: 2px; font-size: 0.8rem; color: var(--text-mid); }
+  .venue-tag strong { color: var(--teal-dark); }
+
+  /* VALUES */
+  .values-bg { background: var(--cream); }
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .value-card { background: white; padding: 2rem; border-radius: 4px; border-top: 3px solid var(--gold); }
+  .value-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .value-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--teal-dark); margin-bottom: 0.6rem; font-weight: 600; }
+  .value-desc { font-size: 0.87rem; color: var(--text-mid); line-height: 1.7; font-weight: 300; }
+
+  /* COMMUNITY */
+  .community-flags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .flag-pill { background: var(--teal); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; letter-spacing: 0.05em; }
+  .community-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; color: var(--teal-dark); line-height: 1.6; max-width: 700px; margin: 2rem 0; font-weight: 300; }
+
+  /* CONTACT */
+  .contact-bg { background: var(--teal-dark); color: white; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-bg .section-title { color: white; }
+  .contact-info { margin-top: 2rem; }
+  .contact-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
+  .contact-item-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
+  .contact-item-text { font-size: 0.9rem; font-weight: 300; line-height: 1.6; opacity: 0.88; }
+  .contact-item-text strong { display: block; color: var(--gold-light); font-weight: 500; margin-bottom: 2px; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .contact-form { background: rgba(255,255,255,0.07); padding: 2.5rem; border-radius: 4px; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.5rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 12px 14px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    color: white; border-radius: 2px; font-family: 'Jost', sans-serif; font-size: 0.9rem;
+    transition: border-color 0.2s; outline: none;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
+  .form-group textarea { height: 110px; resize: vertical; }
+  .form-group select option { background: var(--teal-dark); }
+  .btn-submit { width: 100%; background: var(--gold); color: var(--text-dark); padding: 14px; border: none; font-family: 'Jost', sans-serif; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: background 0.2s; }
+  .btn-submit:hover { background: var(--gold-light); }
+
+  /* FOOTER */
+  footer { background: #0E2A33; color: rgba(255,255,255,0.6); text-align: center; padding: 2rem 1.5rem; font-size: 0.8rem; line-height: 1.8; }
+  footer a { color: var(--gold-light); text-decoration: none; }
+  footer .footer-logo { height: 50px; margin-bottom: 1rem; opacity: 0.85; }
+
+  /* MOBILE NAV */
+  .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--warm-white); border-bottom: 1px solid rgba(196,154,60,0.2); padding: 1.5rem; z-index: 99; flex-direction: column; gap: 1.2rem; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { text-decoration: none; color: var(--text-mid); font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .about-grid, .programs-grid, .values-grid, .contact-grid { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    .vision-box { padding: 2.5rem 1.5rem; }
+    section { padding: 3.5rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="BYF_logo.png" alt="Bhakti Yoga Foundation Logo">
+    <div class="nav-name">Bhakti Yoga Foundation<span>Simple Living · High Thinking</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#values">Values</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Join Us</a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#programs" onclick="toggleMenu()">Programs</a>
+  <a href="#values" onclick="toggleMenu()">Values</a>
+  <a href="#community" onclick="toggleMenu()">Community</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <img src="BYF_logo.png" alt="Bhakti Yoga Foundation" class="hero-logo">
+    <p class="hero-tagline">Simple Living · High Thinking</p>
+    <h1>Nurturing <em>Minds,</em><br>Nourishing <em>Souls</em></h1>
+    <p class="hero-sub">A Queensland community where every family has access to timeless wisdom, wholesome nourishment, and a nurturing space to grow together.</p>
+    <div class="hero-badges">
+      <span class="badge">✓ ACNC Registered Charity</span>
+      <span class="badge">ABN 88 219 281 244</span>
+      <span class="badge">Est. October 2024</span>
+      <span class="badge">Free Weekly Programs</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#programs" class="btn-primary">Our Sunday Programs</a>
+      <a href="#contact" class="btn-outline">Get Involved</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-bg" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">Who We Are</p>
+        <h2 class="section-title">A Community <em>Rooted in</em> Wisdom</h2>
+        <div class="divider"></div>
+        <p>Bhakti Yoga Foundation (legally registered as Divine Rhythm Inc.) is an ACNC-registered not-for-profit charity based in Queensland, Australia. We are a community of families, volunteers, and dedicated individuals united by a shared commitment to inner growth, character development, and conscious living.</p>
+        <p>Founded in October 2024 and active since January 2025, our foundation has been running free weekly programs every Sunday in the northern Brisbane area. We are entirely self-funded through the generous contributions of our members — every dollar goes directly toward running programs, hiring community venues, and providing free meals.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Families Served Weekly</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">7+</div>
+          <div class="stat-label">Countries Represented</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Community-Funded</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Free</div>
+          <div class="stat-label">All Programs & Meals</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section>
+  <div class="container">
+    <div class="vision-box">
+      <p class="section-label" style="color:var(--gold-light)">Our Vision</p>
+      <h2 class="section-title">A World Where Families<br><em>Grow Together</em></h2>
+      <div class="divider"></div>
+      <p>A Queensland community where every family — regardless of cultural background — has access to timeless wisdom, wholesome nourishment, and a nurturing environment that cultivates character, resilience, and inner peace across generations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="container">
+    <p class="section-label">Every Sunday</p>
+    <h2 class="section-title">Two Programs.<br><em>One Community.</em></h2>
+    <div class="divider"></div>
+    <p style="color:var(--text-mid);font-weight:300;max-width:560px">Join us every Sunday at our free community programs in northern Brisbane. All are welcome — no prior experience needed.</p>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-header">
+          <div class="program-time">Morning Program · 9:30 AM – 11:00 AM</div>
+          <div class="program-title">Spiritual Education Classes</div>
+        </div>
+        <div class="program-body">
+          <ul>
+            <li>Children (up to 8): Vedic culture, character education & spiritual values</li>
+            <li>Children (9–16): Deeper age-appropriate exploration of the same themes</li>
+            <li>Parents & Adults: Bhagavad Gita discourse — practical wisdom & stress management</li>
+            <li>All programs run simultaneously every Sunday</li>
+          </ul>
+          <div class="venue-tag">📍 <strong>Pendicup Community Centre</strong><br>Samsonvale Road, Warner QLD 4500</div>
+        </div>
+      </div>
+      <div class="program-card">
+        <div class="program-header">
+          <div class="program-time">Evening Program · 5:00 PM – 7:00 PM</div>
+          <div class="program-title">Community Spiritual Festival</div>
+        </div>
+        <div class="program-body">
+          <ul>
+            <li>Kirtan — uplifting musical meditation</li>
+            <li>Bhagavad Gita class with practical wisdom for daily life</li>
+            <li>Bhajans — devotional songs and group chanting</li>
+            <li>Free vegan/vegetarian dinner — open to all</li>
+            <li>Regular senior & international guest speakers</li>
+          </ul>
+          <div class="venue-tag">📍 <strong>Pendicup Community Centre</strong> (Warner) <br>or <strong>Bray Hall Community Centre</strong> (Petrie)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-bg" id="values">
+  <div class="container">
+    <p class="section-label">What We Stand For</p>
+    <h2 class="section-title">Our Core <em>Values</em></h2>
+    <div class="divider"></div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🌱</div>
+        <div class="value-title">Character & Ethics</div>
+        <div class="value-desc">Cultivating patience, humility, compassion, and responsibility in children and youth for a life of meaning.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🧘</div>
+        <div class="value-title">Mindfulness & Resilience</div>
+        <div class="value-desc">Teaching mind management, meditation, and stress relief to help families thrive in a distracted world.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🍃</div>
+        <div class="value-title">Wholesome Nourishment</div>
+        <div class="value-desc">Providing free, fresh, sattvic vegetarian meals that nourish body, mind, and spirit every week.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <div class="value-title">Inclusive Community</div>
+        <div class="value-desc">Welcoming all cultures and backgrounds — a shared space for learning, belonging, and growth.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">📖</div>
+        <div class="value-title">Wisdom & Education</div>
+        <div class="value-desc">Drawing from Vedic and Bhagavad Gita teachings to offer practical guidance for everyday life.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">👨‍👩‍👧</div>
+        <div class="value-title">Family Unity</div>
+        <div class="value-desc">Aligning parents and children in the same direction — same values, same vision, same growth journey.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section id="community">
+  <div class="container">
+    <p class="section-label">Our Community</p>
+    <h2 class="section-title">One Family,<br><em>Many Backgrounds</em></h2>
+    <div class="divider"></div>
+    <p class="community-quote">"We live in a time of unprecedented distraction. Bhakti Yoga Foundation exists to fill that gap — a sanctuary where children learn who they really are, parents rediscover timeless wisdom, and the whole family grows together in joy, gratitude, and service."</p>
+    <p style="color:var(--text-mid);font-weight:300;margin-bottom:1rem">Families from across the world join us every Sunday:</p>
+    <div class="community-flags">
+      <span class="flag-pill">🇮🇳 India</span>
+      <span class="flag-pill">🇳🇵 Nepal</span>
+      <span class="flag-pill">🇫🇯 Fiji</span>
+      <span class="flag-pill">🇵🇰 Pakistan</span>
+      <span class="flag-pill">🇷🇺 Russia</span>
+      <span class="flag-pill">🇬🇧 United Kingdom</span>
+      <span class="flag-pill">🇺🇸 United States</span>
+      <span class="flag-pill">🇦🇺 Australia</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-bg" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <p class="section-label" style="color:var(--gold-light)">Come Join Us</p>
+        <h2 class="section-title">We'd Love to<br><em>Welcome You</em></h2>
+        <div class="divider"></div>
+        <p style="font-weight:300;opacity:0.88;line-height:1.8">All programs are free and open to everyone. No experience needed — just bring an open heart. We look forward to welcoming you and your family.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text"><strong>Address</strong>1 Elmwood Dr, Bray Park QLD 4500</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📧</div>
+            <div class="contact-item-text"><strong>Email</strong><a href="mailto:bhaktiyoga.org@gmail.com" style="color:var(--gold-light)">bhaktiyoga.org@gmail.com</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-text"><strong>Phone</strong><a href="tel:0423217463" style="color:var(--gold-light)">0423 217 463</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div class="contact-item-text"><strong>Sunday Programs</strong>Morning: 9:30–11:00 AM · Evening: 5:00–7:00 PM</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:white;margin-bottom:1.5rem;font-weight:300">Send Us a Message</p>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="e.g. Priya Sharma" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>I'm interested in</label>
+            <select>
+              <option>Attending Sunday Programs</option>
+              <option>Volunteering</option>
+              <option>Making a Donation</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell us a little about yourself or your question..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="BYF_logo.png" alt="Bhakti Yoga Foundation" class="footer-logo"><br>
+  <strong style="color:white">Bhakti Yoga Foundation</strong> · Registered as Divine Rhythm Inc.<br>
+  ABN 88 219 281 244 · ACNC Registered Charity · Queensland, Australia<br>
+  <a href="mailto:bhaktiyoga.org@gmail.com">bhaktiyoga.org@gmail.com</a> · <a href="tel:0423217463">0423 217 463</a><br><br>
+  <span style="font-size:0.72rem;opacity:0.5">© 2025 Bhakti Yoga Foundation. All rights reserved. Simple Living · High Thinking.</span>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert('Thank you for your message! We will be in touch soon. Hare Krishna 🙏');
+    e.target.reset();
+  }
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.style.opacity=1; e.target.style.transform='translateY(0)'; } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.stat-card, .program-card, .value-card').forEach(el => {
+    el.style.opacity = 0; el.style.transform = 'translateY(20px)'; el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
