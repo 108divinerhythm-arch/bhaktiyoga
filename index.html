@@ -407,7 +407,7 @@
       </div>
       <div class="contact-form">
         <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:white;margin-bottom:1.5rem;font-weight:300">Send Us a Message</p>
-        <form action="https://formspree.io/f/xzdyjkgp" method="POST">
+        <form action="https://api.web3forms.com/submit" method="POST">
           <div class="form-group">
             <label>Your Name</label>
             <input type="text" placeholder="e.g. Priya Sharma" required>
@@ -415,6 +415,10 @@
           <div class="form-group">
             <label>Email</label>
             <input type="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" name="phone" placeholder="e.g. 0412 345 678">
           </div>
           <div class="form-group">
             <label>I'm interested in</label>
@@ -429,7 +433,9 @@
             <label>Message</label>
             <textarea placeholder="Tell us a little about yourself or your question..."></textarea>
           </div>
-          <input type="hidden" name="_subject" value="New message from bhaktiyoga.com.au">
+          <input type="hidden" name="access_key" value="01506bd9-5451-4daf-bbd6-5addd8fb26bd">
+          <input type="hidden" name="subject" value="New Message from bhaktiyoga.com.au">
+          <input type="hidden" name="from_name" value="Bhakti Yoga Website">
           <button type="submit" class="btn-submit">Send Message</button>
         </form>
       </div>
