@@ -407,7 +407,7 @@
       </div>
       <div class="contact-form">
         <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:white;margin-bottom:1.5rem;font-weight:300">Send Us a Message</p>
-        <form onsubmit="handleSubmit(event)">
+        <form action="https://formspree.io/f/xzdyjkgp" method="POST">
           <div class="form-group">
             <label>Your Name</label>
             <input type="text" placeholder="e.g. Priya Sharma" required>
@@ -429,6 +429,7 @@
             <label>Message</label>
             <textarea placeholder="Tell us a little about yourself or your question..."></textarea>
           </div>
+          <input type="hidden" name="_subject" value="New message from bhaktiyoga.com.au">
           <button type="submit" class="btn-submit">Send Message</button>
         </form>
       </div>
@@ -448,10 +449,7 @@
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
-  function handleSubmit(e) {
-    e.preventDefault();
-    alert('Thank you for your message! We will be in touch soon. Hare Krishna 🙏');
-    e.target.reset();
+  
   }
   // Fade-in on scroll
   const observer = new IntersectionObserver((entries) => {
