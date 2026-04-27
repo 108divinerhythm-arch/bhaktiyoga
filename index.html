@@ -6,181 +6,259 @@
 <title>Bhakti Yoga Foundation — Simple Living · High Thinking</title>
 <meta name="description" content="Bhakti Yoga Foundation — A Queensland community nurturing families through spiritual education, Vedic wisdom, and wholesome nourishment. Free weekly programs in Brisbane.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --gold: #C49A3C;
     --gold-light: #E8C97A;
-    --teal: #2A6B7C;
-    --teal-dark: #1A4A57;
-    --cream: #FAF6EE;
-    --warm-white: #FFFDF7;
+    --gold-pale: #FDF3DC;
+    --teal: #3D6B45;
+    --teal-dark: #2C4E2F;
+    --teal-deeper: #1A2E1C;
+    --cream: #F5F0E8;
+    --warm-white: #FDFAF4;
     --text-dark: #1C1C1C;
-    --text-mid: #4A4A4A;
+    --text-mid: #3A3A3A;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Jost', sans-serif;
-    background: var(--warm-white);
-    color: var(--text-dark);
-    overflow-x: hidden;
-  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 17px; }
+  body { font-family: 'Jost', sans-serif; background: var(--warm-white); color: var(--text-dark); overflow-x: hidden; line-height: 1.7; }
 
-  /* NAV */
+  /* ── NAV ── */
   nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(255,253,247,0.96);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(196,154,60,0.2);
-    padding: 0 2rem;
+    position: fixed; top: 0; width: 100%; z-index: 200;
+    background: rgba(255,253,247,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196,154,60,0.25);
+    padding: 0 3rem;
     display: flex; align-items: center; justify-content: space-between;
-    height: 72px;
+    height: 76px;
   }
-  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .nav-logo img { height: 48px; }
-  .nav-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--teal-dark); line-height: 1.2; }
-  .nav-name span { display: block; font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gold); font-family: 'Jost', sans-serif; font-weight: 500; text-transform: uppercase; }
-  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
-  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 400; transition: color 0.2s; }
+  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo img { height: 52px; }
+  .nav-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--teal-dark); line-height: 1.25; }
+  .nav-name span { display: block; font-size: 0.62rem; letter-spacing: 0.22em; color: var(--gold); font-family: 'Jost', sans-serif; font-weight: 500; text-transform: uppercase; margin-top: 2px; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover { color: var(--gold); }
-  .nav-cta { background: var(--teal); color: white; padding: 10px 22px; border-radius: 2px; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+  .nav-cta { background: var(--teal); color: white; padding: 11px 26px; border-radius: 3px; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: background 0.2s; white-space: nowrap; }
   .nav-cta:hover { background: var(--teal-dark); }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-  .hamburger span { display: block; width: 24px; height: 2px; background: var(--teal-dark); transition: all 0.3s; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: var(--teal-dark); border-radius: 2px; transition: all 0.3s; }
+  .mobile-menu { display: none; position: fixed; top: 76px; left: 0; right: 0; background: var(--warm-white); border-bottom: 2px solid rgba(196,154,60,0.2); padding: 2rem 2.5rem; z-index: 199; flex-direction: column; gap: 1.4rem; box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { text-decoration: none; color: var(--text-mid); font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 400; padding-bottom: 1rem; border-bottom: 1px solid rgba(196,154,60,0.15); }
+  .mobile-menu a:last-child { border-bottom: none; }
 
-  /* HERO */
+  /* ── HERO ── */
   .hero {
-    min-height: 100vh;
-    background: linear-gradient(160deg, var(--teal-dark) 0%, var(--teal) 45%, #3A7A6A 100%);
+    min-height: 100vh; width: 100%;
+    background: linear-gradient(155deg, #1A2E1C 0%, #2C4E2F 40%, #3D6B45 70%, #5C8C4A 100%);
     display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
-    padding-top: 72px;
+    position: relative; overflow: hidden; padding-top: 76px;
   }
   .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(196,154,60,0.08) 0%, transparent 60%),
+                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M40 0L0 40L40 80L80 40Z'/%3E%3C/g%3E%3C/svg%3E");
   }
-  .hero-inner { text-align: center; color: white; padding: 2rem; max-width: 860px; position: relative; z-index: 1; }
-  .hero-logo { width: 160px; margin-bottom: 2.5rem; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3)); animation: fadeDown 1s ease both; }
-  .hero-tagline { font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.2rem; animation: fadeDown 1s ease 0.2s both; }
-  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 300; line-height: 1.15; margin-bottom: 1.5rem; animation: fadeDown 1s ease 0.35s both; }
+  .hero-inner { text-align: center; color: white; padding: 3rem 2rem; width: 100%; max-width: 960px; position: relative; z-index: 1; }
+  .hero-logo { width: 180px; margin-bottom: 2.5rem; filter: drop-shadow(0 6px 30px rgba(0,0,0,0.35)); animation: fadeDown 1s ease both; }
+  .hero-tagline { font-size: 0.78rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.4rem; animation: fadeDown 1s ease 0.2s both; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.2rem, 7vw, 6rem); font-weight: 300; line-height: 1.1; margin-bottom: 1.8rem; animation: fadeDown 1s ease 0.35s both; }
   .hero h1 em { font-style: italic; color: var(--gold-light); }
-  .hero-sub { font-size: 1.05rem; font-weight: 300; line-height: 1.8; max-width: 580px; margin: 0 auto 2.5rem; opacity: 0.88; animation: fadeDown 1s ease 0.5s both; }
-  .hero-badges { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; animation: fadeDown 1s ease 0.65s both; }
-  .badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); padding: 6px 16px; border-radius: 2px; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
-  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeDown 1s ease 0.8s both; }
-  .btn-primary { background: var(--gold); color: var(--text-dark); padding: 15px 36px; text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; transition: background 0.2s; }
-  .btn-primary:hover { background: var(--gold-light); }
-  .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.5); color: white; padding: 15px 36px; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; transition: all 0.2s; }
-  .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
-  .scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; }
-  .scroll-indicator svg { color: rgba(255,255,255,0.5); }
+  .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 300; line-height: 1.9; max-width: 640px; margin: 0 auto 2.5rem; opacity: 0.9; animation: fadeDown 1s ease 0.5s both; }
+  .hero-badges { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; animation: fadeDown 1s ease 0.65s both; }
+  .badge { background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.22); padding: 7px 18px; border-radius: 30px; font-size: 0.73rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .badge a { color: var(--gold-light); text-decoration: none; }
+  .badge a:hover { text-decoration: underline; }
+  .hero-btns { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; animation: fadeDown 1s ease 0.8s both; }
+  .btn-primary { background: var(--gold); color: #1C1C1C; padding: 17px 42px; text-decoration: none; font-size: 0.88rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 3px; transition: background 0.2s, transform 0.2s; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.5); color: white; padding: 17px 42px; text-decoration: none; font-size: 0.88rem; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 3px; transition: all 0.2s; }
+  .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+  .scroll-ind { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; opacity: 0.5; }
 
-  @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
 
-  /* SECTIONS */
-  section { padding: 5rem 1.5rem; }
-  .container { max-width: 1100px; margin: 0 auto; }
-  .section-label { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1rem; }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.2; color: var(--teal-dark); margin-bottom: 1.5rem; }
+  /* ── LEGAL TRUST BAR ── */
+  .trust-bar {
+    background: #1A2E1C; color: rgba(255,255,255,0.75);
+    padding: 1.2rem 3rem; display: flex; align-items: center; justify-content: center;
+    gap: 2.5rem; flex-wrap: wrap; font-size: 0.8rem; letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(196,154,60,0.15);
+  }
+  .trust-item { display: flex; align-items: center; gap: 0.6rem; }
+  .trust-item svg { color: var(--gold); flex-shrink: 0; }
+  .trust-item a { color: var(--gold-light); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+  .trust-item a:hover { color: white; text-decoration: underline; }
+  .trust-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.15); }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 3rem; width: 100%; }
+  .container { max-width: 1280px; margin: 0 auto; width: 100%; }
+  .section-label { font-size: 0.72rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 1rem; display: block; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 4.5vw, 3.6rem); font-weight: 300; line-height: 1.15; color: var(--teal-dark); margin-bottom: 1.5rem; }
   .section-title em { font-style: italic; }
-  .divider { width: 60px; height: 2px; background: var(--gold); margin-bottom: 2rem; }
+  .gold-line { width: 70px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); margin-bottom: 2.5rem; border-radius: 2px; }
+  .body-text { font-size: 1.05rem; line-height: 1.95; color: var(--text-mid); font-weight: 300; }
 
-  /* ABOUT */
+  /* ── ABOUT ── */
   .about-bg { background: var(--cream); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .about-text p { font-size: 1rem; line-height: 1.9; color: var(--text-mid); margin-bottom: 1.2rem; font-weight: 300; }
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: center; }
+  .about-text p { font-size: 1.05rem; line-height: 1.95; color: var(--text-mid); margin-bottom: 1.4rem; font-weight: 300; }
+  .legal-notice { background: white; border: 1px solid rgba(196,154,60,0.3); border-left: 4px solid var(--gold); padding: 1.4rem 1.6rem; border-radius: 0 6px 6px 0; margin-top: 1.8rem; }
+  .legal-notice p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; margin: 0; font-weight: 300; }
+  .legal-notice strong { color: var(--teal-dark); font-weight: 600; }
+  .legal-notice a { color: var(--teal); text-decoration: none; font-weight: 500; border-bottom: 1px dotted var(--teal); transition: color 0.2s; }
+  .legal-notice a:hover { color: var(--gold); }
   .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .stat-card { background: white; border: 1px solid rgba(196,154,60,0.2); padding: 1.8rem; border-radius: 4px; text-align: center; }
-  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: var(--teal); font-weight: 300; line-height: 1; }
-  .stat-label { font-size: 0.78rem; color: var(--text-mid); letter-spacing: 0.08em; margin-top: 0.5rem; }
+  .stat-card { background: white; border: 1px solid rgba(196,154,60,0.18); padding: 2.2rem 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 20px rgba(0,0,0,0.04); transition: transform 0.3s, box-shadow 0.3s; }
+  .stat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.09); }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; color: var(--teal); font-weight: 300; line-height: 1; }
+  .stat-label { font-size: 0.82rem; color: var(--text-mid); letter-spacing: 0.06em; margin-top: 0.6rem; font-weight: 400; }
 
-  /* VISION */
-  .vision-box { background: var(--teal-dark); color: white; padding: 4rem; border-radius: 4px; text-align: center; }
-  .vision-box .section-title { color: white; }
-  .vision-box p { font-size: 1.15rem; font-weight: 300; line-height: 1.9; opacity: 0.88; max-width: 700px; margin: 0 auto; }
-  .vision-box .divider { margin: 0 auto 2rem; }
+  /* ── VISION ── */
+  .vision-wrap { background: linear-gradient(135deg, var(--teal-dark) 0%, #3A5E30 100%); border-radius: 12px; padding: 5rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  .vision-wrap::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; background: rgba(196,154,60,0.06); border-radius: 50%; }
+  .vision-wrap .section-title { color: white; }
+  .vision-wrap .gold-line { margin: 0 auto 2.5rem; }
+  .vision-wrap p { font-size: 1.2rem; font-weight: 300; line-height: 1.95; opacity: 0.9; max-width: 760px; margin: 0 auto; color: white; }
 
-  /* PROGRAMS */
-  .programs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
-  .program-card { border: 1px solid rgba(196,154,60,0.25); border-radius: 4px; overflow: hidden; }
-  .program-header { background: var(--teal); color: white; padding: 1.5rem 2rem; }
-  .program-time { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.5rem; }
-  .program-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; }
-  .program-body { padding: 2rem; background: white; }
+  /* ── PROGRAMS ── */
+  .programs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 3rem; }
+  .program-card { border-radius: 10px; overflow: hidden; box-shadow: 0 4px 30px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; }
+  .program-card:hover { transform: translateY(-6px); box-shadow: 0 16px 50px rgba(0,0,0,0.13); }
+  .program-header { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%); color: white; padding: 2rem 2.5rem; }
+  .program-time { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.6rem; font-weight: 500; }
+  .program-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; }
+  .program-body { padding: 2rem 2.5rem; background: white; }
   .program-body ul { list-style: none; }
-  .program-body li { padding: 0.6rem 0; border-bottom: 1px solid var(--cream); font-size: 0.9rem; color: var(--text-mid); font-weight: 300; display: flex; gap: 0.8rem; align-items: flex-start; }
+  .program-body li { padding: 0.75rem 0; border-bottom: 1px solid var(--cream); font-size: 1rem; color: var(--text-mid); font-weight: 300; display: flex; gap: 1rem; align-items: flex-start; line-height: 1.6; }
   .program-body li:last-child { border-bottom: none; }
-  .program-body li::before { content: '✦'; color: var(--gold); font-size: 0.6rem; margin-top: 4px; flex-shrink: 0; }
-  .venue-tag { background: var(--cream); padding: 0.8rem 1.2rem; margin-top: 1.2rem; border-radius: 2px; font-size: 0.8rem; color: var(--text-mid); }
-  .venue-tag strong { color: var(--teal-dark); }
+  .program-body li::before { content: '✦'; color: var(--gold); font-size: 0.65rem; margin-top: 5px; flex-shrink: 0; }
+  .venue-tag { background: var(--gold-pale); border: 1px solid rgba(196,154,60,0.2); padding: 1rem 1.4rem; margin-top: 1.4rem; border-radius: 6px; font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+  .venue-tag strong { color: var(--teal-dark); font-weight: 600; }
 
-  /* VALUES */
+  /* ── ENROLMENT ── */
+  .enrol-bg { background: linear-gradient(135deg, #1A2E1C 0%, #2C4E2F 50%, #3D6B45 100%); }
+  .enrol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .enrol-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(196,154,60,0.25); border-radius: 12px; padding: 2.8rem; }
+  .class-row { background: rgba(255,255,255,0.07); border-left: 4px solid var(--gold); padding: 1.4rem 1.8rem; border-radius: 0 8px 8px 0; margin-bottom: 1.2rem; }
+  .class-label { font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.4rem; font-weight: 600; }
+  .class-desc { color: white; font-weight: 300; font-size: 1rem; }
+  .time-pill { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); padding: 1rem 1.5rem; border-radius: 8px; display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+  .time-pill span { color: rgba(255,255,255,0.75); font-size: 0.92rem; font-weight: 300; }
+  .enrol-btn { display: block; text-align: center; background: var(--gold); color: #1C1C1C; padding: 18px 36px; border-radius: 4px; text-decoration: none; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; transition: background 0.2s, transform 0.2s; margin-bottom: 1rem; }
+  .enrol-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .enrol-note { text-align: center; color: rgba(255,255,255,0.4); font-size: 0.78rem; font-weight: 300; }
+
+  /* ── VALUES ── */
   .values-bg { background: var(--cream); }
-  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-  .value-card { background: white; padding: 2rem; border-radius: 4px; border-top: 3px solid var(--gold); }
-  .value-icon { font-size: 1.8rem; margin-bottom: 1rem; }
-  .value-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--teal-dark); margin-bottom: 0.6rem; font-weight: 600; }
-  .value-desc { font-size: 0.87rem; color: var(--text-mid); line-height: 1.7; font-weight: 300; }
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3.5rem; }
+  .value-card { background: white; padding: 2.5rem 2rem; border-radius: 10px; border-top: 4px solid var(--gold); box-shadow: 0 2px 20px rgba(0,0,0,0.04); transition: transform 0.3s, box-shadow 0.3s; }
+  .value-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+  .value-icon { font-size: 2.2rem; margin-bottom: 1.2rem; }
+  .value-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--teal-dark); margin-bottom: 0.8rem; font-weight: 600; }
+  .value-desc { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; font-weight: 300; }
 
-  /* COMMUNITY */
-  .community-flags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
-  .flag-pill { background: var(--teal); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; letter-spacing: 0.05em; }
-  .community-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; color: var(--teal-dark); line-height: 1.6; max-width: 700px; margin: 2rem 0; font-weight: 300; }
+  /* ── COMMUNITY ── */
+  .community-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .community-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-style: italic; color: var(--teal-dark); line-height: 1.65; font-weight: 300; border-left: 4px solid var(--gold); padding-left: 2rem; margin: 2rem 0; }
+  .community-flags { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
+  .flag-pill { background: var(--teal); color: white; padding: 8px 18px; border-radius: 30px; font-size: 0.85rem; letter-spacing: 0.04em; transition: background 0.2s; }
+  .flag-pill:hover { background: var(--teal-dark); }
+  .community-visual { background: linear-gradient(135deg, var(--teal-dark), var(--teal)); border-radius: 12px; padding: 3rem; color: white; }
+  .c-stat { padding: 1.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
+  .c-stat:last-child { border-bottom: none; }
+  .c-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--gold-light); font-weight: 300; }
+  .c-stat-label { font-size: 0.9rem; font-weight: 300; opacity: 0.85; }
 
-  /* CONTACT */
-  .contact-bg { background: var(--teal-dark); color: white; }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  /* ── CONTACT ── */
+  .contact-bg { background: var(--teal-deeper); color: white; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
   .contact-bg .section-title { color: white; }
-  .contact-info { margin-top: 2rem; }
-  .contact-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
-  .contact-item-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
-  .contact-item-text { font-size: 0.9rem; font-weight: 300; line-height: 1.6; opacity: 0.88; }
-  .contact-item-text strong { display: block; color: var(--gold-light); font-weight: 500; margin-bottom: 2px; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
-  .contact-form { background: rgba(255,255,255,0.07); padding: 2.5rem; border-radius: 4px; }
-  .form-group { margin-bottom: 1.2rem; }
-  .form-group label { display: block; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.5rem; }
+  .contact-info { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.6rem; }
+  .contact-item { display: flex; gap: 1.2rem; align-items: flex-start; }
+  .c-icon { width: 46px; height: 46px; background: rgba(255,255,255,0.08); border: 1px solid rgba(196,154,60,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; }
+  .c-text { font-size: 0.95rem; font-weight: 300; line-height: 1.7; opacity: 0.88; }
+  .c-text strong { display: block; color: var(--gold-light); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 3px; opacity: 1; }
+  .c-text a { color: rgba(255,255,255,0.88); text-decoration: none; transition: color 0.2s; }
+  .c-text a:hover { color: var(--gold-light); }
+  .contact-form-wrap { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 3rem; border-radius: 12px; }
+  .form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: white; margin-bottom: 2rem; font-weight: 300; }
+  .form-group { margin-bottom: 1.4rem; }
+  .form-group label { display: block; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.6rem; font-weight: 500; }
   .form-group input, .form-group textarea, .form-group select {
-    width: 100%; padding: 12px 14px;
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-    color: white; border-radius: 2px; font-family: 'Jost', sans-serif; font-size: 0.9rem;
+    width: 100%; padding: 14px 16px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13);
+    color: white; border-radius: 4px; font-family: 'Jost', sans-serif; font-size: 0.95rem;
     transition: border-color 0.2s; outline: none;
   }
-  .form-group input:focus, .form-group textarea:focus { border-color: var(--gold); }
-  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
-  .form-group textarea { height: 110px; resize: vertical; }
-  .form-group select option { background: var(--teal-dark); }
-  .btn-submit { width: 100%; background: var(--gold); color: var(--text-dark); padding: 14px; border: none; font-family: 'Jost', sans-serif; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: background 0.2s; }
-  .btn-submit:hover { background: var(--gold-light); }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold); background: rgba(255,255,255,0.1); }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .form-group textarea { height: 120px; resize: vertical; }
+  .form-group select option { background: var(--teal-dark); color: white; }
+  .btn-submit { width: 100%; background: var(--gold); color: #1C1C1C; padding: 16px; border: none; font-family: 'Jost', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; border-radius: 4px; transition: background 0.2s, transform 0.2s; }
+  .btn-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
 
-  /* FOOTER */
-  footer { background: #0E2A33; color: rgba(255,255,255,0.6); text-align: center; padding: 2rem 1.5rem; font-size: 0.8rem; line-height: 1.8; }
-  footer a { color: var(--gold-light); text-decoration: none; }
-  footer .footer-logo { height: 50px; margin-bottom: 1rem; opacity: 0.85; }
+  /* ── FOOTER ── */
+  footer { background: #0F1A10; color: rgba(255,255,255,0.5); padding: 3.5rem 3rem 2.5rem; }
+  .footer-inner { max-width: 1280px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .footer-brand img { height: 60px; margin-bottom: 1.2rem; opacity: 0.9; }
+  .footer-brand p { font-size: 0.88rem; line-height: 1.8; max-width: 280px; }
+  .footer-col h4 { color: var(--gold-light); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; margin-bottom: 1.2rem; }
+  .footer-col a, .footer-col p { display: block; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.88rem; margin-bottom: 0.6rem; line-height: 1.7; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--gold-light); }
+  .legal-block { background: rgba(255,255,255,0.04); border: 1px solid rgba(196,154,60,0.15); border-radius: 8px; padding: 1.4rem 1.8rem; margin-bottom: 2rem; }
+  .legal-block p { font-size: 0.82rem; line-height: 1.85; color: rgba(255,255,255,0.5); }
+  .legal-block strong { color: rgba(255,255,255,0.75); font-weight: 500; }
+  .legal-block a { color: var(--gold-light); text-decoration: none; border-bottom: 1px dotted rgba(232,201,122,0.4); transition: color 0.2s; }
+  .legal-block a:hover { color: white; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.78rem; }
+  .footer-bottom span { opacity: 0.4; }
 
-  /* MOBILE NAV */
-  .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--warm-white); border-bottom: 1px solid rgba(196,154,60,0.2); padding: 1.5rem; z-index: 99; flex-direction: column; gap: 1.2rem; }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a { text-decoration: none; color: var(--text-mid); font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; }
-
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    section { padding: 5rem 2rem; }
+    nav { padding: 0 2rem; }
+    .trust-bar { padding: 1rem 2rem; gap: 1.5rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
+    .community-inner { grid-template-columns: 1fr; }
+    .enrol-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
   @media (max-width: 768px) {
+    html { font-size: 16px; }
+    nav { padding: 0 1.5rem; height: 68px; }
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
+    .mobile-menu { top: 68px; }
+    section { padding: 4rem 1.5rem; }
+    .trust-bar { padding: 1rem 1.5rem; gap: 1rem; font-size: 0.75rem; }
+    .trust-divider { display: none; }
     .about-grid, .programs-grid, .values-grid, .contact-grid { grid-template-columns: 1fr; }
     .about-stats { grid-template-columns: 1fr 1fr; }
-    .vision-box { padding: 2.5rem 1.5rem; }
-    section { padding: 3.5rem 1.2rem; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+    .vision-wrap { padding: 3rem 2rem; }
+    .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .hero-logo { width: 140px; }
+  }
+  @media (max-width: 480px) {
+    .values-grid { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="BYF_logo.png" alt="Bhakti Yoga Foundation Logo">
+    <img src="BYF_logo.png" alt="Bhakti Yoga Foundation">
     <div class="nav-name">Bhakti Yoga Foundation<span>Simple Living · High Thinking</span></div>
   </a>
   <ul class="nav-links">
@@ -200,6 +278,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" onclick="toggleMenu()">About</a>
   <a href="#programs" onclick="toggleMenu()">Programs</a>
+  <a href="#enrolment" onclick="toggleMenu()">Enrolment</a>
   <a href="#values" onclick="toggleMenu()">Values</a>
   <a href="#community" onclick="toggleMenu()">Community</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
@@ -211,10 +290,10 @@
     <img src="BYF_logo.png" alt="Bhakti Yoga Foundation" class="hero-logo">
     <p class="hero-tagline">Simple Living · High Thinking</p>
     <h1>Nurturing <em>Minds,</em><br>Nourishing <em>Souls</em></h1>
-    <p class="hero-sub">A Queensland community where every family has access to timeless wisdom, wholesome nourishment, and a nurturing space to grow together.</p>
+    <p class="hero-sub">A Queensland community where every family has access to timeless wisdom, wholesome nourishment, and a nurturing space to grow together — every Sunday, completely free.</p>
     <div class="hero-badges">
-      <span class="badge">✓ ACNC Registered Charity</span>
-      <span class="badge">ABN 88 219 281 244</span>
+      <span class="badge">✓ <a href="https://www.acnc.gov.au/charity/charities/b647b6a3-2a8d-ef11-8a6a-00224897020b/profile" target="_blank">ACNC Registered Charity</a></span>
+      <span class="badge">✓ <a href="https://abr.business.gov.au/ABN/View/88219281244" target="_blank">ABN 88 219 281 244</a></span>
       <span class="badge">Est. October 2024</span>
       <span class="badge">Free Weekly Programs</span>
     </div>
@@ -223,21 +302,47 @@
       <a href="#contact" class="btn-outline">Get Involved</a>
     </div>
   </div>
-  <div class="scroll-indicator">
-    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  <div class="scroll-ind">
+    <svg width="28" height="28" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
   </div>
 </section>
+
+<!-- LEGAL TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <span>Registered Charity — <a href="https://www.acnc.gov.au/charity/charities/b647b6a3-2a8d-ef11-8a6a-00224897020b/profile" target="_blank">View ACNC Profile</a></span>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <span>ABN 88 219 281 244 — <a href="https://abr.business.gov.au/ABN/View/88219281244" target="_blank">Verify on ABR</a></span>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <span>Legal entity: <strong style="color:rgba(255,255,255,0.85)">Divine Rhythm Inc.</strong> · Operating as Bhakti Yoga Foundation</span>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <span>100% Not-for-Profit · All funds go to programs</span>
+  </div>
+</div>
 
 <!-- ABOUT -->
 <section class="about-bg" id="about">
   <div class="container">
     <div class="about-grid">
       <div class="about-text">
-        <p class="section-label">Who We Are</p>
+        <span class="section-label">Who We Are</span>
         <h2 class="section-title">A Community <em>Rooted in</em> Wisdom</h2>
-        <div class="divider"></div>
-        <p>Bhakti Yoga Foundation (legally registered as Divine Rhythm Inc.) is an ACNC-registered not-for-profit charity based in Queensland, Australia. We are a community of families, volunteers, and dedicated individuals united by a shared commitment to inner growth, character development, and conscious living.</p>
-        <p>Founded in October 2024 and active since January 2025, our foundation has been running free weekly programs every Sunday in the northern Brisbane area. We are entirely self-funded through the generous contributions of our members — every dollar goes directly toward running programs, hiring community venues, and providing free meals.</p>
+        <div class="gold-line"></div>
+        <p>Bhakti Yoga Foundation is an ACNC-registered not-for-profit charity based in Queensland, Australia. We are a community of families, volunteers, and dedicated individuals united by a shared commitment to inner growth, character development, and conscious living.</p>
+        <p>Founded in October 2024 and active since January 2025, we run free weekly programs every Sunday in northern Brisbane — welcoming families from all cultural backgrounds with open arms. We are entirely self-funded through community contributions. Every dollar goes directly toward programs, venue hire, and free meals.</p>
+        <div class="legal-notice">
+          <p><strong>Legal &amp; Registration Notice:</strong> Bhakti Yoga Foundation is the public operating name of <strong>Divine Rhythm Inc.</strong> — our registered legal entity. Both names refer to the same ACNC-registered charity (ABN <a href="https://abr.business.gov.au/ABN/View/88219281244" target="_blank">88 219 281 244</a>). You can verify our charity status on the <a href="https://www.acnc.gov.au/charity/charities/b647b6a3-2a8d-ef11-8a6a-00224897020b/profile" target="_blank">ACNC Charity Register</a>. This is a common and fully compliant practice under Australian charity law.</p>
+        </div>
       </div>
       <div class="about-stats">
         <div class="stat-card">
@@ -254,7 +359,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-num">Free</div>
-          <div class="stat-label">All Programs & Meals</div>
+          <div class="stat-label">All Programs &amp; Meals</div>
         </div>
       </div>
     </div>
@@ -264,10 +369,10 @@
 <!-- VISION -->
 <section>
   <div class="container">
-    <div class="vision-box">
-      <p class="section-label" style="color:var(--gold-light)">Our Vision</p>
+    <div class="vision-wrap">
+      <span class="section-label" style="color:var(--gold-light)">Our Vision</span>
       <h2 class="section-title">A World Where Families<br><em>Grow Together</em></h2>
-      <div class="divider"></div>
+      <div class="gold-line"></div>
       <p>A Queensland community where every family — regardless of cultural background — has access to timeless wisdom, wholesome nourishment, and a nurturing environment that cultivates character, resilience, and inner peace across generations.</p>
     </div>
   </div>
@@ -276,10 +381,10 @@
 <!-- PROGRAMS -->
 <section id="programs">
   <div class="container">
-    <p class="section-label">Every Sunday</p>
+    <span class="section-label">Every Sunday · Northern Brisbane</span>
     <h2 class="section-title">Two Programs.<br><em>One Community.</em></h2>
-    <div class="divider"></div>
-    <p style="color:var(--text-mid);font-weight:300;max-width:560px">Join us every Sunday at our free community programs in northern Brisbane. All are welcome — no prior experience needed.</p>
+    <div class="gold-line"></div>
+    <p class="body-text" style="max-width:620px;margin-bottom:0.5rem">Join us every Sunday at our free community programs. All are welcome — no prior experience or background needed. Just bring an open heart.</p>
     <div class="programs-grid">
       <div class="program-card">
         <div class="program-header">
@@ -288,10 +393,10 @@
         </div>
         <div class="program-body">
           <ul>
-            <li>Children (up to 8): Vedic culture, character education & spiritual values</li>
-            <li>Children (9–16): Deeper age-appropriate exploration of the same themes</li>
-            <li>Parents & Adults: Bhagavad Gita discourse — practical wisdom & stress management</li>
-            <li>All programs run simultaneously every Sunday</li>
+            <li>Kids Class 1 (Ages up to 8) — Vedic culture, character education &amp; spiritual values</li>
+            <li>Kids Class 2 (Ages 9–16) — Deeper age-appropriate exploration of wisdom &amp; ethics</li>
+            <li>Adult Class — Bhagavad Gita discourse, practical wisdom &amp; stress management</li>
+            <li>All three classes run simultaneously every Sunday</li>
           </ul>
           <div class="venue-tag">📍 <strong>Pendicup Community Centre</strong><br>Samsonvale Road, Warner QLD 4500</div>
         </div>
@@ -303,116 +408,87 @@
         </div>
         <div class="program-body">
           <ul>
-            <li>Kirtan — uplifting musical meditation</li>
+            <li>Kirtan — uplifting musical meditation &amp; devotional chanting</li>
             <li>Bhagavad Gita class with practical wisdom for daily life</li>
-            <li>Bhajans — devotional songs and group chanting</li>
-            <li>Free vegan/vegetarian dinner — open to all</li>
-            <li>Regular senior & international guest speakers</li>
+            <li>Bhajans — devotional songs and group singing</li>
+            <li>Free vegan/vegetarian dinner — open to all, no booking needed</li>
+            <li>Regular senior &amp; international guest speakers</li>
           </ul>
-          <div class="venue-tag">📍 <strong>Pendicup Community Centre</strong> (Warner) <br>or <strong>Bray Hall Community Centre</strong> (Petrie)</div>
+          <div class="venue-tag">📍 <strong>Pendicup Community Centre</strong> (Warner)<br>or <strong>Bray Hall Community Centre</strong> (Petrie)</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-
-  <!-- ENROLLMENT BANNER -->
-  <span id="enrolment"></span>
-  <section style="background: linear-gradient(135deg, #1A4A57 0%, #2A6B7C 100%); padding: 5rem 1.5rem;">
-    <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-        <div>
-          <p class="section-label" style="color: var(--gold-light)">Children's Enrolment</p>
-          <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: white; line-height: 1.2; margin-bottom: 1.5rem;">
-            Enrol Your Child<br><em style="font-style:italic; color: var(--gold-light)">Today</em>
-          </h2>
-          <div style="width: 60px; height: 2px; background: var(--gold); margin-bottom: 2rem;"></div>
-          <p style="color: rgba(255,255,255,0.88); font-weight: 300; line-height: 1.9; font-size: 1rem; margin-bottom: 1rem;">
-            Would you like to enrol your child — or children — in our Sunday morning classes? We offer two age-appropriate classes every week, completely free of charge.
-          </p>
-          <p style="color: rgba(255,255,255,0.88); font-weight: 300; line-height: 1.9; font-size: 1rem;">
-            Simply click the button to fill out our enrolment form. You can register one or more children in a single submission. Our admin team will be in touch to welcome you personally.
-          </p>
+<!-- ENROLMENT -->
+<span id="enrolment"></span>
+<section class="enrol-bg">
+  <div class="container">
+    <div class="enrol-grid">
+      <div>
+        <span class="section-label" style="color:var(--gold-light)">Children's Enrolment</span>
+        <h2 class="section-title" style="color:white">Enrol Your Child<br><em style="color:var(--gold-light)">Today</em></h2>
+        <div class="gold-line"></div>
+        <p style="color:rgba(255,255,255,0.88);font-weight:300;line-height:1.95;font-size:1.05rem;margin-bottom:1.2rem">Would you like to enrol your child — or children — in our Sunday morning classes? We offer two age-appropriate classes every week, completely free of charge.</p>
+        <p style="color:rgba(255,255,255,0.88);font-weight:300;line-height:1.95;font-size:1.05rem">Simply complete our enrolment form below. You can register one or more children in a single submission. Our admin team will be in touch personally to welcome your family.</p>
+      </div>
+      <div class="enrol-card">
+        <div class="class-row">
+          <div class="class-label">Kids Class 1</div>
+          <div class="class-desc">Ages up to 8 years — Vedic culture, values &amp; spiritual stories</div>
         </div>
-        <div>
-          <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(196,154,60,0.3); border-radius: 8px; padding: 2.5rem;">
-            <div style="display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem;">
-              <div style="background: rgba(255,255,255,0.08); border-left: 3px solid var(--gold); padding: 1.2rem 1.5rem; border-radius: 0 4px 4px 0;">
-                <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.4rem;">Kids Class 1</div>
-                <div style="color: white; font-weight: 300; font-size: 0.95rem;">Ages up to 8 years — Vedic culture, values & spiritual stories</div>
-              </div>
-              <div style="background: rgba(255,255,255,0.08); border-left: 3px solid var(--gold); padding: 1.2rem 1.5rem; border-radius: 0 4px 4px 0;">
-                <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.4rem;">Kids Class 2</div>
-                <div style="color: white; font-weight: 300; font-size: 0.95rem;">Ages 9–16 years — Deeper wisdom, character & mindfulness</div>
-              </div>
-              <div style="background: rgba(255,255,255,0.05); padding: 1rem 1.5rem; border-radius: 4px; display: flex; align-items: center; gap: 0.8rem;">
-                <span style="font-size: 1.2rem;">🕘</span>
-                <span style="color: rgba(255,255,255,0.75); font-size: 0.88rem; font-weight: 300;">Every Sunday · 9:30 AM – 11:00 AM · Free of charge</span>
-              </div>
-            </div>
-            <a href="https://forms.gle/fww7QtXL5ipYJ6H78" target="_blank" style="
-              display: block; text-align: center;
-              background: var(--gold);
-              color: #1C1C1C;
-              padding: 16px 32px;
-              border-radius: 3px;
-              text-decoration: none;
-              font-family: 'Jost', sans-serif;
-              font-size: 0.88rem;
-              font-weight: 500;
-              letter-spacing: 0.12em;
-              text-transform: uppercase;
-              transition: background 0.2s;
-              margin-bottom: 1rem;
-            " onmouseover="this.style.background='#E8C97A'" onmouseout="this.style.background='#C49A3C'">
-              ✦ &nbsp; Complete Enrolment Form
-            </a>
-            <p style="text-align: center; color: rgba(255,255,255,0.45); font-size: 0.75rem; font-weight: 300;">
-              You can enrol one or multiple children in a single form
-            </p>
-          </div>
+        <div class="class-row">
+          <div class="class-label">Kids Class 2</div>
+          <div class="class-desc">Ages 9–16 years — Deeper wisdom, character &amp; mindfulness</div>
         </div>
+        <div class="time-pill">
+          <span style="font-size:1.3rem">🕘</span>
+          <span>Every Sunday · 9:30 AM – 11:00 AM · Completely free</span>
+        </div>
+        <a href="https://forms.gle/fww7QtXL5ipYJ6H78" target="_blank" class="enrol-btn">✦ &nbsp; Complete Enrolment Form</a>
+        <p class="enrol-note">You can enrol one or multiple children in a single form submission</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 <!-- VALUES -->
 <section class="values-bg" id="values">
   <div class="container">
-    <p class="section-label">What We Stand For</p>
+    <span class="section-label">What We Stand For</span>
     <h2 class="section-title">Our Core <em>Values</em></h2>
-    <div class="divider"></div>
+    <div class="gold-line"></div>
     <div class="values-grid">
       <div class="value-card">
         <div class="value-icon">🌱</div>
-        <div class="value-title">Character & Ethics</div>
-        <div class="value-desc">Cultivating patience, humility, compassion, and responsibility in children and youth for a life of meaning.</div>
+        <div class="value-title">Character &amp; Ethics</div>
+        <div class="value-desc">Cultivating patience, humility, compassion, and responsibility in children and youth for a life of deep meaning and purpose.</div>
       </div>
       <div class="value-card">
         <div class="value-icon">🧘</div>
-        <div class="value-title">Mindfulness & Resilience</div>
-        <div class="value-desc">Teaching mind management, meditation, and stress relief to help families thrive in a distracted world.</div>
+        <div class="value-title">Mindfulness &amp; Resilience</div>
+        <div class="value-desc">Teaching mind management, meditation, and stress relief to help families thrive in an increasingly distracted world.</div>
       </div>
       <div class="value-card">
         <div class="value-icon">🍃</div>
         <div class="value-title">Wholesome Nourishment</div>
-        <div class="value-desc">Providing free, fresh, sattvic vegetarian meals that nourish body, mind, and spirit every week.</div>
+        <div class="value-desc">Providing free, fresh, sattvic vegetarian meals every week that nourish body, mind, and spirit for all who attend.</div>
       </div>
       <div class="value-card">
         <div class="value-icon">🤝</div>
         <div class="value-title">Inclusive Community</div>
-        <div class="value-desc">Welcoming all cultures and backgrounds — a shared space for learning, belonging, and growth.</div>
+        <div class="value-desc">Welcoming all cultures and backgrounds — a shared space for learning, belonging, and growth without barriers.</div>
       </div>
       <div class="value-card">
         <div class="value-icon">📖</div>
-        <div class="value-title">Wisdom & Education</div>
-        <div class="value-desc">Drawing from Vedic and Bhagavad Gita teachings to offer practical guidance for everyday life.</div>
+        <div class="value-title">Wisdom &amp; Education</div>
+        <div class="value-desc">Drawing from Vedic and Bhagavad Gita teachings to offer timeless, practical guidance for the challenges of everyday life.</div>
       </div>
       <div class="value-card">
         <div class="value-icon">👨‍👩‍👧</div>
         <div class="value-title">Family Unity</div>
-        <div class="value-desc">Aligning parents and children in the same direction — same values, same vision, same growth journey.</div>
+        <div class="value-desc">Aligning parents and children in the same direction — same values, same vision, same journey of growth together.</div>
       </div>
     </div>
   </div>
@@ -421,20 +497,47 @@
 <!-- COMMUNITY -->
 <section id="community">
   <div class="container">
-    <p class="section-label">Our Community</p>
-    <h2 class="section-title">One Family,<br><em>Many Backgrounds</em></h2>
-    <div class="divider"></div>
-    <p class="community-quote">"We live in a time of unprecedented distraction. Bhakti Yoga Foundation exists to fill that gap — a sanctuary where children learn who they really are, parents rediscover timeless wisdom, and the whole family grows together in joy, gratitude, and service."</p>
-    <p style="color:var(--text-mid);font-weight:300;margin-bottom:1rem">Families from across the world join us every Sunday:</p>
-    <div class="community-flags">
-      <span class="flag-pill">🇮🇳 India</span>
-      <span class="flag-pill">🇳🇵 Nepal</span>
-      <span class="flag-pill">🇫🇯 Fiji</span>
-      <span class="flag-pill">🇵🇰 Pakistan</span>
-      <span class="flag-pill">🇷🇺 Russia</span>
-      <span class="flag-pill">🇬🇧 United Kingdom</span>
-      <span class="flag-pill">🇺🇸 United States</span>
-      <span class="flag-pill">🇦🇺 Australia</span>
+    <div class="community-inner">
+      <div>
+        <span class="section-label">Our Community</span>
+        <h2 class="section-title">One Family,<br><em>Many Backgrounds</em></h2>
+        <div class="gold-line"></div>
+        <p class="community-quote">"We exist because the world needs more families who look in the same direction — a sanctuary where children learn who they truly are, parents rediscover timeless wisdom, and the whole family grows in joy, gratitude, and service."</p>
+        <p class="body-text" style="margin-bottom:1.2rem">Families from across the world join us every Sunday:</p>
+        <div class="community-flags">
+          <span class="flag-pill">🇮🇳 India</span>
+          <span class="flag-pill">🇳🇵 Nepal</span>
+          <span class="flag-pill">🇫🇯 Fiji</span>
+          <span class="flag-pill">🇵🇰 Pakistan</span>
+          <span class="flag-pill">🇷🇺 Russia</span>
+          <span class="flag-pill">🇬🇧 United Kingdom</span>
+          <span class="flag-pill">🇺🇸 United States</span>
+          <span class="flag-pill">🇦🇺 Australia</span>
+        </div>
+      </div>
+      <div class="community-visual">
+        <span class="section-label" style="color:var(--gold-light)">By the Numbers</span>
+        <div class="c-stat">
+          <span class="c-stat-label">Families welcomed weekly</span>
+          <span class="c-stat-num">50+</span>
+        </div>
+        <div class="c-stat">
+          <span class="c-stat-label">Countries represented</span>
+          <span class="c-stat-num">7+</span>
+        </div>
+        <div class="c-stat">
+          <span class="c-stat-label">Free meals served weekly</span>
+          <span class="c-stat-num">100+</span>
+        </div>
+        <div class="c-stat">
+          <span class="c-stat-label">Years of community</span>
+          <span class="c-stat-num">1+</span>
+        </div>
+        <div class="c-stat">
+          <span class="c-stat-label">Cost to attend</span>
+          <span class="c-stat-num" style="font-size:1.8rem;color:var(--gold-light)">Free</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -444,32 +547,35 @@
   <div class="container">
     <div class="contact-grid">
       <div>
-        <p class="section-label" style="color:var(--gold-light)">Come Join Us</p>
+        <span class="section-label" style="color:var(--gold-light)">Come Join Us</span>
         <h2 class="section-title">We'd Love to<br><em>Welcome You</em></h2>
-        <div class="divider"></div>
-        <p style="font-weight:300;opacity:0.88;line-height:1.8">All programs are free and open to everyone. No experience needed — just bring an open heart. We look forward to welcoming you and your family.</p>
+        <div class="gold-line"></div>
+        <p class="body-text" style="color:rgba(255,255,255,0.85)">All programs are free and open to everyone. No experience needed — just bring an open heart. We look forward to welcoming you and your family.</p>
         <div class="contact-info">
           <div class="contact-item">
-            <div class="contact-item-icon">📍</div>
-            <div class="contact-item-text"><strong>Address</strong>1 Elmwood Dr, Bray Park QLD 4500</div>
+            <div class="c-icon">📍</div>
+            <div class="c-text"><strong>Address</strong>1 Elmwood Dr, Bray Park QLD 4500</div>
           </div>
           <div class="contact-item">
-            <div class="contact-item-icon">📧</div>
-            <div class="contact-item-text"><strong>Email</strong><a href="mailto:admin@bhaktiyoga.com.au" style="color:var(--gold-light)">admin@bhaktiyoga.com.au</a></div>
+            <div class="c-icon">📧</div>
+            <div class="c-text"><strong>Email</strong><a href="mailto:admin@bhaktiyoga.com.au">admin@bhaktiyoga.com.au</a></div>
           </div>
           <div class="contact-item">
-            <div class="contact-item-icon">📞</div>
-            <div class="contact-item-text"><strong>Phone</strong><a href="tel:0423217463" style="color:var(--gold-light)">0423 217 463</a><br><a href="tel:0468802467" style="color:var(--gold-light)">0468 802 467</a></div>
+            <div class="c-icon">📞</div>
+            <div class="c-text"><strong>Phone</strong><a href="tel:0423217463">0423 217 463</a><br><a href="tel:0468802467">0468 802 467</a></div>
           </div>
           <div class="contact-item">
-            <div class="contact-item-icon">🕐</div>
-            <div class="contact-item-text"><strong>Sunday Programs</strong>Morning: 9:30–11:00 AM · Evening: 5:00–7:00 PM</div>
+            <div class="c-icon">🕐</div>
+            <div class="c-text"><strong>Sunday Programs</strong>Morning: 9:30–11:00 AM<br>Evening: 5:00–7:00 PM</div>
           </div>
         </div>
       </div>
-      <div class="contact-form">
-        <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:white;margin-bottom:1.5rem;font-weight:300">Send Us a Message</p>
+      <div class="contact-form-wrap">
+        <p class="form-title">Send Us a Message</p>
         <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="01506bd9-5451-4daf-bbd6-5addd8fb26bd">
+          <input type="hidden" name="subject" value="New Message from bhaktiyoga.com.au">
+          <input type="hidden" name="from_name" value="Bhakti Yoga Website">
           <div class="form-group">
             <label>Your Name</label>
             <input type="text" name="name" placeholder="e.g. Priya Sharma" required>
@@ -498,36 +604,79 @@
             <label>Message</label>
             <textarea name="message" placeholder="Tell us a little about yourself or your question..."></textarea>
           </div>
-          <input type="hidden" name="access_key" value="01506bd9-5451-4daf-bbd6-5addd8fb26bd">
-          <input type="hidden" name="subject" value="New Message from bhaktiyoga.com.au">
-          <input type="hidden" name="from_name" value="Bhakti Yoga Website">
-          <button type="submit" class="btn-submit">Send Message</button>
+          <button type="submit" class="btn-submit">Send Message →</button>
         </form>
       </div>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <img src="BYF_logo.png" alt="Bhakti Yoga Foundation" class="footer-logo"><br>
-  <strong style="color:white">Bhakti Yoga Foundation</strong> · Registered as Divine Rhythm Inc.<br>
-  ABN 88 219 281 244 · ACNC Registered Charity · Queensland, Australia<br>
-  <a href="mailto:admin@bhaktiyoga.com.au">admin@bhaktiyoga.com.au</a> · <a href="tel:0423217463">0423 217 463</a><br><br>
-  <span style="font-size:0.72rem;opacity:0.5">© 2025 Bhakti Yoga Foundation. All rights reserved. Simple Living · High Thinking.</span>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="BYF_logo.png" alt="Bhakti Yoga Foundation">
+        <p>Nurturing minds, nourishing souls, and uniting communities through timeless wisdom — every Sunday in Queensland, Australia.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#about">About Us</a>
+        <a href="#programs">Sunday Programs</a>
+        <a href="#enrolment">Children's Enrolment</a>
+        <a href="#values">Our Values</a>
+        <a href="#community">Our Community</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:admin@bhaktiyoga.com.au">admin@bhaktiyoga.com.au</a>
+        <a href="tel:0423217463">0423 217 463</a>
+        <a href="tel:0468802467">0468 802 467</a>
+        <p>1 Elmwood Dr, Bray Park QLD 4500</p>
+        <p>Sunday Programs: 9:30 AM &amp; 5:00 PM</p>
+      </div>
+    </div>
+    <div class="legal-block">
+      <p>
+        <strong>Bhakti Yoga Foundation</strong> is the public operating name of <strong>Divine Rhythm Inc.</strong> — a not-for-profit organisation registered with the Australian Charities and Not-for-profits Commission (ACNC).
+        Legal entity: <strong>Divine Rhythm Inc.</strong> &nbsp;|&nbsp;
+        ABN: <a href="https://abr.business.gov.au/ABN/View/88219281244" target="_blank">88 219 281 244</a> &nbsp;|&nbsp;
+        <a href="https://www.acnc.gov.au/charity/charities/b647b6a3-2a8d-ef11-8a6a-00224897020b/profile" target="_blank">View ACNC Charity Registration →</a><br>
+        All assets and income are applied solely toward the organisation's charitable purposes. No distributions are made to members or directors.
+      </p>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Bhakti Yoga Foundation (Divine Rhythm Inc.) · All rights reserved.</span>
+      <span>Simple Living · High Thinking</span>
+    </div>
+  </div>
 </footer>
 
 <script>
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
-  
-  }
-  // Fade-in on scroll
+  // Close menu on outside click
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobileMenu');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !e.target.closest('.hamburger')) {
+      menu.classList.remove('open');
+    }
+  });
+  // Scroll animations
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting) { e.target.style.opacity=1; e.target.style.transform='translateY(0)'; } });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = 1;
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.stat-card, .program-card, .value-card').forEach(el => {
-    el.style.opacity = 0; el.style.transform = 'translateY(20px)'; el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  document.querySelectorAll('.stat-card, .program-card, .value-card, .enrol-card, .community-visual, .legal-notice').forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
     observer.observe(el);
   });
 </script>
